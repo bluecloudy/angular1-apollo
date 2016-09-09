@@ -1,0 +1,5 @@
+build/tests/
+src/
+CHANGELOG.md
+typings.d.ts
+tsconfig.json
