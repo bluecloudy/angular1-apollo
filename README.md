@@ -2,8 +2,6 @@
 
 [![npm version](https://badge.fury.io/js/angular-apollo.svg)](https://badge.fury.io/js/angular-apollo)
 [![Get on Slack](https://img.shields.io/badge/slack-join-orange.svg)](http://www.apollostack.com/#slack)
-[![Build status](https://travis-ci.org/apollostack/angular1-apollo.svg?branch=master)](https://travis-ci.org/apollostack/angular1-apollo)
-[![Coverage Status](https://coveralls.io/repos/github/apollostack/angular1-apollo/badge.svg?branch=master)](https://coveralls.io/github/apollostack/angular1-apollo?branch=master)
 [![bitHound Overall Score](https://www.bithound.io/github/apollostack/angular1-apollo/badges/score.svg)](https://www.bithound.io/github/apollostack/angular1-apollo)
 
 Use your GraphQL server data in your Angular 1.0 app, with the [Apollo Client](https://github.com/apollostack/apollo-client).
@@ -14,15 +12,82 @@ Use your GraphQL server data in your Angular 1.0 app, with the [Apollo Client](h
 ## Install
 
 ```bash
-npm install angular-apollo --save
+npm install angular-apollo apollo-client --save
 ```
 
-## Development
+## API
 
-Running tests locally:
+```ts
+angular.module('app', [
+  'angular-apollo'
+])
+```
 
+### Default client
+#### ApolloProvider.defaultClient
+
+
+```ts
+import ApolloClient from 'apollo-client';
+
+angular.module('app', [
+  'angular-apollo'
+]).config((apolloProvider) => {
+  const client = new ApolloClient();
+
+  apolloProvider.defaultClient(client);
+});
 ```
-# nvm use node
-npm install
-npm test
+
+### Queries
+#### Apollo.query(options): Promise<ApolloQueryResult>
+
+[See documentation](http://dev.apollodata.com/core/apollo-client-api.html#ApolloClient.query)
+
+```ts
+import gql from 'graphql-tag`;
+
+angular.module('app')
+  .controller('AppCtrl', (apollo) => {
+    apollo.query({
+      query: gql`
+        query getHeroes {
+          heroes {
+            name
+            power
+          }
+        }
+      `
+    }).then(result => {
+      console.log('got data', result);
+    });
+  });
 ```
+
+### Mutations
+#### Apollo.mutate(options): Promise<ApolloQueryResult>
+
+[See documentation](http://dev.apollodata.com/core/apollo-client-api.html#ApolloClient\.mutate)
+
+```ts
+import gql from 'graphql-tag`;
+
+angular.module('app')
+  .controller('AppCtrl', (apollo) => {
+    apollo.mutate({
+      mutation: gql`
+        mutation newHero($name: String!) {
+          addHero(name: $name) {
+            power
+          }
+        }
+      `,
+      variables: {
+        name: 'Batman'
+      }
+    }).then(result => {
+      console.log('got data', result);
+    });
+  });
+```
+
