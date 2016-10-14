@@ -1,6 +1,6 @@
-# angular-apollo
+# angular1-apollo
 
-[![npm version](https://badge.fury.io/js/angular-apollo.svg)](https://badge.fury.io/js/angular-apollo)
+[![npm version](https://badge.fury.io/js/angular1-apollo.svg)](https://badge.fury.io/js/angular1-apollo)
 [![Get on Slack](https://img.shields.io/badge/slack-join-orange.svg)](http://www.apollostack.com/#slack)
 [![bitHound Overall Score](https://www.bithound.io/github/apollostack/angular1-apollo/badges/score.svg)](https://www.bithound.io/github/apollostack/angular1-apollo)
 
@@ -12,7 +12,7 @@ Use your GraphQL server data in your Angular 1.0 app, with the [Apollo Client](h
 ## Install
 
 ```bash
-npm install angular-apollo apollo-client --save
+npm install angular1-apollo apollo-client --save
 ```
 
 ## API
