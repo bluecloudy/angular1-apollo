@@ -18,8 +18,9 @@
   },
   "homepage": "https://github.com/apollostack/angular1-apollo#readme",
   "peerDependencies": {
-    "apollo-client": "^0.3.0 || ^0.4.0 || ^0.5.0",
-    "angular": "^1.3.0"
+    "apollo-client": "^0.5.0",
+    "angular": "^1.3.0",
+    "rxjs": "^5.0.0-beta.12 || ^5.0.0-rc.1"
   },
   "devDependencies": {
     "@types/angular": "^1.5.13",
@@ -29,7 +30,11 @@
     "@types/node": "^6.0.38",
     "angular": "^1.5.8",
     "apollo-client": "^0.5.0",
+    "rxjs": "^5.0.0-rc.1",
     "typed-graphql": "1.0.2",
     "typescript": "2.0.6"
+  },
+  "dependencies": {
+    "apollo-client-rxjs": "~0.2.2"
   }
 }

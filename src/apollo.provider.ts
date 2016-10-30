@@ -1,7 +1,13 @@
 import { ApolloQueryResult } from 'apollo-client';
+import { rxify } from 'apollo-client-rxjs';
+import { Observable } from 'rxjs/Observable';
 
 import ApolloClient from 'apollo-client';
 import * as angular from 'angular';
+
+import 'rxjs/add/observable/from';
+
+import { ApolloQueryObservable } from './ApolloQueryObservable';
 
 class Apollo {
   constructor(
@@ -13,12 +19,24 @@ class Apollo {
     this.check();
     
     return this.wrap(this.client.query(options));
+  }
+
+  public watchQuery(options: any): ApolloQueryObservable<ApolloQueryResult> {
+    return new ApolloQueryObservable(rxify(this.client.watchQuery)(options));
   } 
 
   public mutate(options: any): angular.IPromise<ApolloQueryResult> {
     this.check();
     
     return this.wrap(this.client.mutate(options));
+  }
+
+  public subscribe(options: any): Observable<any> {
+    if (typeof this.client.subscribe === 'undefined') {
+      throw new Error(`Your version of ApolloClient doesn't support subscriptions`);
+    }
+
+    return Observable.from(this.client.subscribe(options));
   }
 
   private check(): void {
