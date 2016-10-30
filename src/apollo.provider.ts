@@ -13,7 +13,7 @@ class Apollo {
     this.check();
     
     return this.wrap(this.client.query(options));
-  }
+  } 
 
   public mutate(options: any): angular.IPromise<ApolloQueryResult> {
     this.check();
