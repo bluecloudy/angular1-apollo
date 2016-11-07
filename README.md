@@ -45,7 +45,7 @@ angular.module('app', [
 [See documentation](http://dev.apollodata.com/core/apollo-client-api.html#ApolloClient.query)
 
 ```ts
-import gql from 'graphql-tag`;
+import gql from 'graphql-tag';
 
 angular.module('app')
   .controller('AppCtrl', (apollo) => {
@@ -70,7 +70,7 @@ angular.module('app')
 [See documentation](http://dev.apollodata.com/core/apollo-client-api.html#ApolloClient\.mutate)
 
 ```ts
-import gql from 'graphql-tag`;
+import gql from 'graphql-tag';
 
 angular.module('app')
   .controller('AppCtrl', (apollo) => {
